@@ -21,7 +21,6 @@ public class Vue
     GridPane gridPane = new GridPane();
     ArrayList<ArrayList<Pane>> listeCases;
 
-
     //** à décommenter
     //public Vue(Controller controller) throws FileNotFoundException
     public Vue() throws FileNotFoundException
@@ -29,8 +28,7 @@ public class Vue
         //** à décommenter
         // niveau = controller.getNiveau();
         //** à suppr
-        niveau = Modele.get_liste_niveaux("niveaux.xsb").get(1);
-        System.out.println(niveau.get_level());
+        niveau = Modele.get_liste_niveaux("niveaux.xsb").get(0);
         //**
 
         images = new HashMap<>();
@@ -50,7 +48,7 @@ public class Vue
             {
                 Pane pane = new Pane();
                 listeTmp.add(pane);
-                gridPane.add(pane, i, j);
+                gridPane.add(pane, j, i);
             }
             listeCases.add(listeTmp);
         }
