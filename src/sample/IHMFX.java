@@ -8,27 +8,29 @@ import javafx.stage.Stage;
 public class IHMFX extends Application {
 
     VueIHMFX vue;
+    Vue vueJeu;
 
     public void actualise(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-
-                vue.dessine();
+                vueJeu.draw();
+                //vue.dessine();
             }
         });
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-
+    public void start(Stage primaryStage) throws Exception
+    {
         vue = new VueIHMFX();
+        vueJeu = new Vue();
         Controller controleur = new Controller(vue);
         /* montage de la scene */
         MonteurScene monteurScene = new MonteurScene();
 
         Scene scene = monteurScene.
-                setCentre(vue.myButton).
+                setCentre(vueJeu.gridPane).
                 setLargeur(800).
                 setHauteur(800).
                 retourneScene();

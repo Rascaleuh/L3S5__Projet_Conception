@@ -16,7 +16,7 @@ public class Modele {
     }
 
     //retourne une liste de niveaux en fonction d'un fichier .xsb
-    ArrayList<Niveau> get_liste_niveaux(String chemin_fichier) {
+    static ArrayList<Niveau> get_liste_niveaux(String chemin_fichier) {
 
         ArrayList<Niveau> liste_niveaux = new ArrayList<Niveau>();
         ArrayList<ArrayList<Integer>> level = new ArrayList<ArrayList<Integer>>();
