@@ -18,7 +18,6 @@ public class IHMFX extends Application {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-
                 vueNiveau.draw();
             }
         });
@@ -69,6 +68,9 @@ public class IHMFX extends Application {
         MonteurScene monteurScene = new MonteurScene();
         monteurScene.setCentre(vueNiveau.gridPane);
         this.stage.setScene(monteurScene.retourneSceneNiveau());
+
+        ControllerDeplacement controllerDeplacement = new ControllerDeplacement(this);
+
         this.stage.show();
     }
 
@@ -80,7 +82,7 @@ public class IHMFX extends Application {
 
     public VueIHMFX getVueIHMFX() { return this.vueIHMFX; }
 
-   // public VueNiveau getVueNiveau() { return vueNiveau; }
+    public VueNiveau getVueNiveau() { return vueNiveau; }
 
 }
 
