@@ -1,4 +1,3 @@
-package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -16,7 +15,7 @@ public class Controller {
 
     Controller(VueIHMFX a_vue, IHMFX a_ihm) {
         this.vue = a_vue;
-        vue.myButton.setOnAction(new ActionSelectFile());
+        vue.boutonSelectFile.setOnAction(new ActionSelectFile());
         ihm = a_ihm;
     }
 
@@ -32,17 +31,17 @@ public class Controller {
 
              String currentPath = Paths.get(".").toAbsolutePath().normalize().toString(); // amene directement au dossier de l'executable
              fileChooser.setInitialDirectory(new File(currentPath));
-             File file = fileChooser.showOpenDialog(vue.myButton.getScene().getWindow());
+             File file = fileChooser.showOpenDialog(vue.boutonSelectFile.getScene().getWindow());
 
              if (file != null) {
 
-                 /******   Jouer ! ******/
+                 /******  Afficher les boutons de niveaux ******/
                  System.out.println("chemin du fichier : " + file.getAbsolutePath());
                  Modele modele = Modele.getModele();
                  modele.set_liste_niveaux(file.getAbsolutePath());
                  ArrayList<Niveau> n = modele.getListeNiveaux();
                  if(n==null) System.out.println("null");
-                 ihm.setVueNiveaux();
+                 ihm.setVueListeNiveaux();
 
                  /***********************/
 

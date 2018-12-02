@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -24,7 +22,7 @@ public class VueListeNiveaux {
         vBox.getChildren().add(title);
 
         for( Niveau n : listeNiveaux) {
-            System.out.println("iteration");
+
             //Creer un bouton avec le nom du niveau correspondant
             Button b = new Button(n.get_nom());
 

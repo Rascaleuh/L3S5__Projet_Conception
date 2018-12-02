@@ -1,21 +1,21 @@
-package sample;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
-import javafx.scene.Node;
 
 import java.util.ArrayList;
 
 public class MonteurScene {
+
     ArrayList<Region> bas = new ArrayList<Region>();
     Region centre;
     int largeur = 800;
-    int hauteur = 400;
+    int hauteur = 800;
+    ScrollPane scrollPane;
+    Region haut;
 
     public MonteurScene setLargeur(int l){
         largeur=l;
@@ -52,9 +52,19 @@ public class MonteurScene {
     Scene retourneSceneMenuNiveau() {
 
         assert (centre !=null);
-        ScrollPane scrollPane = new ScrollPane(centre);
+
+       scrollPane = new ScrollPane(centre);
 
         return new Scene(scrollPane,largeur,hauteur);
+
+    }
+    Scene retourneSceneNiveau() {
+
+        assert (centre !=null);
+
+        Pane pane = new Pane(centre);
+
+        return new Scene(pane,largeur,hauteur);
 
     }
 }

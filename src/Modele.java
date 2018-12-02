@@ -1,5 +1,3 @@
-package sample;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -22,7 +20,19 @@ public class Modele {
         return singleton;
     }
 
+    public Niveau getNiveau(String nomNiveau) {
 
+        for(Niveau n : this.liste_niveaux) {
+
+            if( n.get_nom() == nomNiveau )
+                return n;
+        }
+        return null;
+    }
+
+    public Niveau getNiveauActuel() { return this.actuel; }
+
+    public void setNiveauActuel(Niveau a_niveau) { this.actuel = a_niveau; }
 
     public ArrayList<Niveau> getListeNiveaux() {
         return this.liste_niveaux;
