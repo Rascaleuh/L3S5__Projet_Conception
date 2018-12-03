@@ -95,6 +95,9 @@ public class Modele {
                                 nom = "";
                                 level.clear();
                                 index_niveau++;
+                                //Ajout saut de ligne
+                                fr.skip(1);
+
                             }
                         }
                         else if (lecture_saut_de_ligne) {

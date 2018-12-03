@@ -22,5 +22,17 @@ public class Niveau {
     /* setters */
     void set_px(int _px) { this.px = _px; }
     void set_py(int _py) { this.py = _py; }
+
+    /* reset position */
+    void resetPos() {
+        for (int i = 0; i < this.level.size(); i++)
+            for (int j = 0; j < this.level.get(i).size(); j++)
+                if( this.level.get(i).get(j) == 43 || this.level.get(i).get(j) == 64 ) {
+                    this.px = j;
+                    this.py = i;
+                }
+
+    }
+
 }
 
