@@ -5,8 +5,10 @@ import javafx.scene.input.KeyCode;
 public class FacadeModele {
     ModeleConcret modele = new ModeleConcret();
 
-    public void move(KeyCode c) {
+    public boolean move(KeyCode c) {
         modele.move(c);
+        return modele.win();
+
     }
 
     public void reset() {

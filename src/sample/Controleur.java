@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Controleur implements Sujet {
     private static Controleur singleton;
@@ -32,8 +33,12 @@ public class Controleur implements Sujet {
     }
 
     public void move(KeyCode c) {
-        facadeModele.move(c);
+        //TODO : Faire une pause avant de charger le prochain niveau, maybe un écran de win ? Ou on charge pas le niveau
+        boolean win = facadeModele.move(c);
         notifie();
+        if(win) {
+            niveauSuivant();
+        }
     }
 
     public void reset() {

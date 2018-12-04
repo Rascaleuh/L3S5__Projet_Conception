@@ -130,4 +130,7 @@ public class ModeleConcret implements Modele {
         setActuel(0);
     }
 
+    public boolean win() {
+        return actuel.win();
+    }
 }

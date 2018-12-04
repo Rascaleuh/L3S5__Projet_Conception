@@ -120,7 +120,14 @@ class Niveau {
     }
 
 
-
-
-
+    public boolean win() {
+        for (ArrayList<Integer> aLevel : level) {
+            for (Integer anALevel : aLevel) {
+                if( anALevel == 46 || anALevel == 43){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
