@@ -26,7 +26,15 @@ public class Niveau {
 
     public Niveau(Niveau niveau) {
         nom = niveau.nom;
-        level = new ArrayList<ArrayList<Integer>>(niveau.get_level());
+        level = new ArrayList<ArrayList<Integer>>();
+        // Copie du level
+        for(int i=0; i < niveau.get_level().size(); i++ ){
+            ArrayList<Integer> tmp = new ArrayList<Integer>();
+            for(int j=0; j < niveau.get_level().get(i).size(); j++){
+                tmp.add(niveau.get_level().get(i).get(j));
+            }
+            level.add(tmp);
+        }
         posx = niveau.posx;
         posy = niveau.posy;
     }
@@ -37,8 +45,7 @@ public class Niveau {
 
     public void afficher(){
         System.out.println("Nom : " + nom);
-        System.out.println("Pos départ (x,y) = ("+posx+","+posy+")");
-        System.out.print("Niveau : ");
+        System.out.println("Pos départ : ("+posx+","+posy+")");
         for(int i=0; i < level.size(); i++){
             for(int j=0; j < level.get(i).size(); j++){
                 System.out.print(level.get(i).get(j));

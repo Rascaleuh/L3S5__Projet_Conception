@@ -20,9 +20,7 @@ public class ModeleConcret implements Modele {
     }
 
     public void setActuel(int n){
-        System.out.println("in");
         if ((numNiveau+n >= 0) && (numNiveau+n < liste_niveaux.size())){
-            System.out.println("in");
             actuel = new Niveau(liste_niveaux.get(numNiveau+n));
             numNiveau += n;
             System.out.println("Nouveau lvl : "+numNiveau);
@@ -44,11 +42,14 @@ public class ModeleConcret implements Modele {
         }else if (c == KeyCode.LEFT){
             actuel.move(0, -1);
         }
+        actuel.afficher();
     }
 
     @Override
     public void reset() {
-        actuel.reset();
+        actuel = new Niveau( liste_niveaux.get(numNiveau) );
+        System.out.println("NIVEAU RESET");
+        actuel.afficher();
     }
 
     public void set_liste_niveaux(String chemin) {
@@ -126,6 +127,7 @@ public class ModeleConcret implements Modele {
             System.out.println("Erreur : Le fichier n'a pas été trouvé : " + e.getMessage());
         }
 
+        numNiveau = 0;
         setActuel(0);
     }
 
