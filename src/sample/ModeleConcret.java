@@ -10,16 +10,16 @@ import java.security.Key;
 import java.util.ArrayList;
 
 public class ModeleConcret implements Modele {
-    public Niveau actuel;
-    public ArrayList<Niveau> liste_niveaux;
-    int numNiveau;
+    private Niveau actuel;
+    private ArrayList<Niveau> liste_niveaux;
+    private int numNiveau;
 
-    public ModeleConcret(){
+    ModeleConcret(){
         actuel = new Niveau("Test");
         numNiveau = 0;
     }
 
-    public void setActuel(int n){
+    void setActuel(int n){
         if ((numNiveau+n >= 0) && (numNiveau+n < liste_niveaux.size())){
             actuel = new Niveau(liste_niveaux.get(numNiveau+n));
             numNiveau += n;
@@ -42,7 +42,6 @@ public class ModeleConcret implements Modele {
         }else if (c == KeyCode.LEFT){
             actuel.move(0, -1);
         }
-        actuel.afficher();
     }
 
     @Override
@@ -52,10 +51,10 @@ public class ModeleConcret implements Modele {
         actuel.afficher();
     }
 
-    public void set_liste_niveaux(String chemin) {
-        this.liste_niveaux = new ArrayList<Niveau>();
-        ArrayList<ArrayList<Integer>> level = new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> ligne = new ArrayList<Integer>();
+    void set_liste_niveaux(String chemin) {
+        this.liste_niveaux = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> level = new ArrayList<>();
+        ArrayList<Integer> ligne = new ArrayList<>();
 
         File fichier = new File(chemin);
         try {
