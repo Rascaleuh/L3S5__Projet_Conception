@@ -19,7 +19,8 @@ public class ModeleConcret implements Modele {
         numNiveau = 0;
     }
 
-    void setActuel(int n){
+    @Override
+    public void setActuel(int n){
         if ((numNiveau+n >= 0) && (numNiveau+n < liste_niveaux.size())){
             actuel = new Niveau(liste_niveaux.get(numNiveau+n));
             numNiveau += n;
@@ -28,20 +29,31 @@ public class ModeleConcret implements Modele {
         }
     }
 
+    @Override
     public Niveau getNiveau() {
         return actuel;
     }
 
-    public void move(KeyCode c) {
+    @Override
+    public int move(KeyCode c) {
+        int x = 0;
+        int y = 0;
+
         if( c == KeyCode.UP ){
-            actuel.move(-1, 0);
+            x = -1;
+            y = 0;
         }else if (c == KeyCode.DOWN ){
-            actuel.move(+1, 0);
+            x = 1;
+            y = 0;
         }else if (c == KeyCode.RIGHT){
-            actuel.move(0, +1);
+            x = 0;
+            y = 1;
         }else if (c == KeyCode.LEFT){
-            actuel.move(0, -1);
+            x = 0;
+            y = -1;
         }
+
+        return actuel.move(x, y);
     }
 
     @Override
@@ -51,7 +63,8 @@ public class ModeleConcret implements Modele {
         actuel.afficher();
     }
 
-    void set_liste_niveaux(String chemin) {
+    @Override
+    public void set_liste_niveaux(String chemin) {
         this.liste_niveaux = new ArrayList<>();
         ArrayList<ArrayList<Integer>> level = new ArrayList<>();
         ArrayList<Integer> ligne = new ArrayList<>();
@@ -130,6 +143,7 @@ public class ModeleConcret implements Modele {
         setActuel(0);
     }
 
+    @Override
     public boolean win() {
         return actuel.win();
     }

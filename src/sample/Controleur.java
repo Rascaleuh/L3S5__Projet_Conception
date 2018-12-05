@@ -55,6 +55,19 @@ public class Controleur implements Sujet {
         };
     }
 
+    public CommandeNbMove commandeNbMove(){
+        return new CommandeNbMove(){
+            @Override
+            public int[] exec(){
+                int[] tab = new int[2];
+                tab[0] = facadeModele.nbMove();
+                tab[1] = facadeModele.nbPoussée();
+                return tab;
+            }
+        };
+
+    }
+
     public void set_liste_niveaux(String chemin) {
         facadeModele.set_liste_niveaux(chemin);
         notifie();

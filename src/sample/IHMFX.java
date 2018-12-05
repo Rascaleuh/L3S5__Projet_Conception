@@ -10,11 +10,13 @@ import javafx.stage.Stage;
 
 public class IHMFX extends Application implements Observateur {
     VueIHMFX vue;
+    VueNbMoveIHMFX vueNbMove;
 
     public void actualise(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                vueNbMove.dessine();
                 vue.dessine();
             }
         });
@@ -29,6 +31,10 @@ public class IHMFX extends Application implements Observateur {
         vue.gridPane.setAlignment(Pos.CENTER);
         ControleurIHMFX controleurIHMFX = new ControleurIHMFX(controleur,vue);
 
+        vueNbMove = new VueNbMoveIHMFX(controleur);
+        vueNbMove.labelPoussée.setAlignment(Pos.CENTER);
+        vueNbMove.labelMove.setAlignment(Pos.CENTER);
+
 
         /* montage de la scene */
         MonteurScene monteurScene = new MonteurScene();
@@ -40,6 +46,8 @@ public class IHMFX extends Application implements Observateur {
                 ajoutBas(controleurIHMFX.précédent).
                 ajoutBas(controleurIHMFX.suivant).
                 ajoutBas(controleurIHMFX.reset).
+                ajoutBas(vueNbMove.labelMove).
+                ajoutBas(vueNbMove.labelPoussée).
                 setLargeur(800).
                 setHauteur(800).
                 retourneScene();
