@@ -25,13 +25,13 @@ public class VueIHMFX {
         niveau = commandeNiveau.exec();
 
         images = new HashMap<>();
-        images.put(35, new Image(new FileInputStream("img/mur.png"),80,80,false,false));
-        images.put(36, new Image(new FileInputStream("img/caisse.png"),80,80,false,false));
-        images.put(42, new Image(new FileInputStream("img/caisseV.png"),80,80,false,false));
-        images.put(43, new Image(new FileInputStream("img/personnage.png"),80,80,false,false));
-        images.put(64, new Image(new FileInputStream("img/personnage.png"),80,80,false,false));
-        images.put(32, new Image(new FileInputStream("img/vide.png"),80,80,false,false));
-        images.put(46, new Image(new FileInputStream("img/goal.png"),80,80,false,false));
+        images.put(35, new Image(new FileInputStream("img/mur.png"),50,50,false,false));
+        images.put(36, new Image(new FileInputStream("img/caisse.png"),50,50,false,false));
+        images.put(42, new Image(new FileInputStream("img/caisseV.png"),50,50,false,false));
+        images.put(43, new Image(new FileInputStream("img/personnage_on_goal.png"),50,50,false,false));
+        images.put(64, new Image(new FileInputStream("img/personnage.png"),50,50,false,false));
+        images.put(32, new Image(new FileInputStream("img/vide.png"),50,50,false,false));
+        images.put(46, new Image(new FileInputStream("img/goal.png"),50,50,false,false));
 
 
         listeCases = new ArrayList<>();
