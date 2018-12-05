@@ -2,60 +2,60 @@ package sample;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-import java.util.OptionalDouble;
-import java.util.stream.DoubleStream;
-
-public class IHMFX extends Application {
-
+public class IHMFX extends Application implements Observateur {
     VueIHMFX vue;
-    Vue vueJeu;
 
     public void actualise(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                vueJeu.draw();
-                //vue.dessine();
+                vue.dessine();
             }
         });
-    }
+    };
 
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
-        vue = new VueIHMFX();
-        vueJeu = new Vue();
-        Controller controleur = new Controller(vue);
+    public void start(Stage primaryStage) throws Exception{
+        Controleur controleur = Controleur.getControleur();
+        controleur.abonne(this);
+
+        vue = new VueIHMFX(controleur);
+        vue.gridPane.setAlignment(Pos.CENTER);
+        ControleurIHMFX controleurIHMFX = new ControleurIHMFX(controleur,vue);
+
+
         /* montage de la scene */
         MonteurScene monteurScene = new MonteurScene();
 
-        vueJeu.gridPane.getColumnConstraints().addAll(DoubleStream.of(0, 0, 0).mapToObj(width -> {
-            ColumnConstraints c = new ColumnConstraints();
-            c.setPercentWidth(width);
-            c.setFillWidth(true);
-            return c;
-        }).toArray(ColumnConstraints[]::new));
-
-        //vueJeu.gridPane.prefWidthProperty().bind(primaryStage.widthProperty().multiply(0.01));
+        //TODO AFFICHER / SUPPRIMER LES BOUTONS PAS ACCESSIBLE
         Scene scene = monteurScene.
-                setCentre(vueJeu.gridPane).
+                setCentre(vue.gridPane).
+                ajoutBas(controleurIHMFX.selectFichier).
+                ajoutBas(controleurIHMFX.précédent).
+                ajoutBas(controleurIHMFX.suivant).
+                ajoutBas(controleurIHMFX.reset).
                 setLargeur(800).
                 setHauteur(800).
                 retourneScene();
-        primaryStage.setScene(scene);
 
+        primaryStage.setScene(scene);
 
         primaryStage.setTitle("Sokoban");
         primaryStage.show();
+
+        // Prise en charge des entrées clavier
+        scene.setOnKeyPressed(new ControleurIHMFX.ActionMove());
     }
+
 
     public void lance() {
         launch(new String[]{});
     }
 }
-
 
