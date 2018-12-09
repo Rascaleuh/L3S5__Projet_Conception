@@ -15,7 +15,7 @@ public class ModeleConcret implements Modele {
     private int numNiveau;
 
     ModeleConcret(){
-        actuel = new Niveau("Test");
+        actuel = new Niveau("Sokoban");
         numNiveau = 0;
     }
 

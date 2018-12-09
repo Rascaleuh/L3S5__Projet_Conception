@@ -12,9 +12,9 @@ class Niveau {
         nom = _nom;
         level = new ArrayList<>();
         reset();
-
-
     }
+
+    String getNom() {return nom;}
 
     Niveau(String _nom, ArrayList<ArrayList<Integer>> clone, int _posx, int _posy) {
         nom = _nom;
