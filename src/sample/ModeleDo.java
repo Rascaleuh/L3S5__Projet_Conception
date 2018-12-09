@@ -52,41 +52,42 @@ public class ModeleDo implements Modele {
     }
 
     public void undo(){
-        //TODO : gérer les caisses, la range de l'Arraylist, le nbMove et nbPoussée
-        KeyCode undo = soko.get(index);
-        int x = 0;
-        int y = 0;
+        if( index >= 0 ){
+            KeyCode undo = soko.get(index);
+            int x = 0;
+            int y = 0;
 
-        switch(undo){
-            case UP:
-                undo = KeyCode.DOWN;
-                x = 1;
-                break;
-            case DOWN:
-                undo = KeyCode.UP;
-                x = -1;
-                break;
-            case LEFT:
-                undo = KeyCode.RIGHT;
-                y = 1;
-                break;
-            case RIGHT:
-                undo = KeyCode.LEFT;
-                y = -1;
-                break;
+            switch(undo){
+                case UP:
+                    undo = KeyCode.DOWN;
+                    x = 1;
+                    break;
+                case DOWN:
+                    undo = KeyCode.UP;
+                    x = -1;
+                    break;
+                case LEFT:
+                    undo = KeyCode.RIGHT;
+                    y = 1;
+                    break;
+                case RIGHT:
+                    undo = KeyCode.LEFT;
+                    y = -1;
+                    break;
+            }
+
+            soko.add(undo);
+            index --;
+            getNiveau().moveCaisse(x, y);
         }
-
-        soko.add(undo);
-        index --;
-        getNiveau().moveCaisse(x, y);
-
     }
 
     public void redo(){
-        //TODO : gérer la range de l'ArrayList
-        KeyCode redo = soko.get(index);
-        soko.add(redo);
-        index ++;
-        modeleNbMove.move(redo);
+        if(index+1 != soko.size()){
+            index++;
+            KeyCode redo = soko.get(index);
+            soko.add(redo);
+            modeleNbMove.move(redo);
+        }
     }
 }
