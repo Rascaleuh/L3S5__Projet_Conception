@@ -43,6 +43,7 @@ public class ModeleDo implements Modele {
         listeMouvements = new ArrayList<>();
         listeMouvementsABougeCaisse = new ArrayList<>();
         index = -1;
+        lastIndex = index;
     }
 
     @Override
