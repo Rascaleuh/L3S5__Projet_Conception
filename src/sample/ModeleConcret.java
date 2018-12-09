@@ -55,7 +55,6 @@ public class ModeleConcret implements Modele {
     @Override
     public void reset() {
         actuel = new Niveau( liste_niveaux.get(numNiveau) );
-        System.out.println("NIVEAU RESET");
         actuel.afficher();
     }
 
