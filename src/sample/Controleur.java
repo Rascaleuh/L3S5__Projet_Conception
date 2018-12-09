@@ -42,6 +42,11 @@ public class Controleur implements Sujet {
         notifie();
     }
 
+    public void redoAll(){
+        facadeModele.redoAll();
+        notifie();
+    }
+
     public void move(KeyCode c) {
         //TODO : Faire une pause avant de charger le prochain niveau, maybe un écran de win ? Ou on charge pas le niveau
         boolean win = facadeModele.move(c);

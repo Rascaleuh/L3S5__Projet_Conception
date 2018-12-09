@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ModeleDo implements Modele {
     Modele modeleNbMove;
@@ -34,11 +35,13 @@ public class ModeleDo implements Modele {
     @Override
     public void reset() {
         modeleNbMove.reset();
+        soko = new ArrayList<KeyCode>();
     }
 
     @Override
     public void setActuel(int n) {
         modeleNbMove.setActuel(n);
+        soko = new ArrayList<KeyCode>();
     }
 
     @Override
@@ -88,6 +91,12 @@ public class ModeleDo implements Modele {
             KeyCode redo = soko.get(index);
             soko.add(redo);
             modeleNbMove.move(redo);
+        }
+    }
+
+    public void redoAll(){
+        for(KeyCode c : soko){
+            modeleNbMove.move(c);
         }
     }
 }

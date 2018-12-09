@@ -20,6 +20,7 @@ public class ControleurIHMFX {
     Button suivant;
     Button undo;
     Button redo;
+    Button redoAll;
 
     ControleurIHMFX(Controleur controleur, VueIHMFX vue) {
         this.controleur = controleur;
@@ -42,21 +43,23 @@ public class ControleurIHMFX {
 
         redo = new Button("REDO");
         redo.setOnAction(new ActionRedo());
+
+        redoAll = new Button("RedoALL");
+        redoAll.setOnAction(new ActionRedoAll());
+    }
+
+    class ActionRedoAll implements EventHandler<ActionEvent> {
+        public void handle(ActionEvent event) { controleur.redoAll(); }
+
     }
 
     class ActionUndo implements EventHandler<ActionEvent> {
-        public void handle(ActionEvent event) {
-
-            controleur.undo();
-        }
+        public void handle(ActionEvent event) { controleur.undo(); }
 
     }
 
     class ActionRedo implements EventHandler<ActionEvent> {
-        public void handle(ActionEvent event) {
-
-            controleur.redo();
-        }
+        public void handle(ActionEvent event) { controleur.redo(); }
 
     }
 

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class MonteurScene {
     ArrayList<Region> bas = new ArrayList<Region>();
+    ArrayList<Region> haut = new ArrayList<Region>();
     Region centre;
     int largeur = 800;
     int hauteur = 400;
@@ -31,6 +32,11 @@ public class MonteurScene {
 
     public MonteurScene ajoutBas(Region node) {
         bas.add(node);
+        return this;
+    }
+
+    public MonteurScene ajoutHaut(Region node){
+        haut.add(node);
         return this;
     }
 
@@ -60,6 +66,22 @@ public class MonteurScene {
                 i++;
             }
             gridPane.add(gridPaneBas,0,1);
+        }
+
+        if (haut.size() != 0){
+            GridPane gridPaneHaut = new GridPane();
+            gridPaneHaut.setAlignment(Pos.CENTER);
+            gridPaneHaut.setMinSize(largeur, hauteur/8);
+            gridPaneHaut.setPadding(new Insets(10,10,10,10));
+            //Setting the padding
+            gridPane.setPadding(new Insets(10,10,10,10));
+            int i = 0;
+            for (Region n: haut){
+                n.setMinSize(largeur/haut.size(), hauteur/8);
+                gridPaneHaut.add(n,i,0);
+                i++;
+            }
+            gridPane.add(gridPaneHaut,0,2);
         }
 
         return new Scene(gridPane,largeur,hauteur);

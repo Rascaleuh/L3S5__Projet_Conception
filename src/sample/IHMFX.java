@@ -42,12 +42,13 @@ public class IHMFX extends Application implements Observateur {
         //TODO AFFICHER / SUPPRIMER LES BOUTONS PAS ACCESSIBLE
         Scene scene = monteurScene.
                 setCentre(vue.gridPane).
-                ajoutBas(controleurIHMFX.selectFichier).
-                ajoutBas(controleurIHMFX.précédent).
-                ajoutBas(controleurIHMFX.suivant).
+                ajoutHaut(controleurIHMFX.selectFichier).
+                ajoutHaut(controleurIHMFX.précédent).
+                ajoutHaut(controleurIHMFX.suivant).
                 ajoutBas(controleurIHMFX.reset).
                 ajoutBas(controleurIHMFX.undo).
                 ajoutBas(controleurIHMFX.redo).
+                ajoutBas(controleurIHMFX.redoAll).
                 ajoutBas(vueNbMove.labelMove).
                 ajoutBas(vueNbMove.labelPoussée).
                 setLargeur(800).
@@ -57,6 +58,7 @@ public class IHMFX extends Application implements Observateur {
         primaryStage.setScene(scene);
 
         primaryStage.setTitle("Sokoban");
+        primaryStage.setMaximized(true);
         primaryStage.show();
 
         // Prise en charge des entrées clavier

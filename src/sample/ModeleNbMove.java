@@ -49,6 +49,8 @@ public class ModeleNbMove implements  Modele{
     @Override
     public void setActuel(int n) {
         modele.setActuel(n);
+        nbMove = 0;
+        nbPoussée = 0;
     }
 
 }

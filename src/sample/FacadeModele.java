@@ -47,4 +47,8 @@ public class FacadeModele {
     public void redo() {
         modeleDo.redo();
     }
+
+    public void redoAll() {
+        modeleDo.redoAll();
+    }
 }
