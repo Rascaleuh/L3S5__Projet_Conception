@@ -46,6 +46,10 @@ public class ControleurIHMFX {
 
         redoAll = new Button("RedoALL");
         redoAll.setOnAction(new ActionRedoAll());
+
+        reset.setDisable(true);
+        précédent.setDisable(true);
+        suivant.setDisable(true);
     }
 
     class ActionRedoAll implements EventHandler<ActionEvent> {
@@ -60,7 +64,6 @@ public class ControleurIHMFX {
 
     class ActionRedo implements EventHandler<ActionEvent> {
         public void handle(ActionEvent event) { controleur.redo(); }
-
     }
 
     class ActionPrécédent implements EventHandler<ActionEvent> {
@@ -99,6 +102,15 @@ public class ControleurIHMFX {
 
             if (file != null) {
                 controleur.set_liste_niveaux(file.getAbsolutePath());
+                reset.setDisable(false);
+                précédent.setDisable(false);
+                suivant.setDisable(false);
+            }
+            else
+            {
+                reset.setDisable(true);
+                précédent.setDisable(true);
+                suivant.setDisable(true);
             }
         }
 

@@ -9,8 +9,8 @@ import javafx.scene.layout.Region;
 import java.util.ArrayList;
 
 public class MonteurScene {
-    ArrayList<Region> bas = new ArrayList<Region>();
     ArrayList<Region> haut = new ArrayList<Region>();
+    ArrayList<Region> bas = new ArrayList<Region>();
     Region centre;
     int largeur = 800;
     int hauteur = 400;
@@ -45,12 +45,29 @@ public class MonteurScene {
         GridPane gridPane = new GridPane();
 
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.add(centre,0,0);
         gridPane.setMinSize(largeur, hauteur);
-        centre.setMinSize(largeur, hauteur*7/8);
 
         //Setting the padding
         gridPane.setPadding(new Insets(10, 10, 10, 10));
+
+        if (haut.size()!=0) {
+            GridPane gridPaneHaut = new GridPane();
+            gridPaneHaut.setAlignment(Pos.CENTER);
+            gridPaneHaut.setMinSize(largeur, hauteur/8);
+            gridPaneHaut.setPadding(new Insets(10, 10, 10, 10));
+            //Setting the padding
+            gridPane.setPadding(new Insets(10, 10, 10, 10));
+            int i=0;
+            for (Region n:haut) {
+                n.setMinSize(largeur/haut.size(),hauteur/8);
+                gridPaneHaut.add(n,i,0);
+                i++;
+            }
+            gridPane.add(gridPaneHaut,0,0);
+        }
+
+        gridPane.add(centre,0,1);
+        centre.setMinSize(largeur, hauteur*6/8);
 
         if (bas.size()!=0) {
             GridPane gridPaneBas = new GridPane();
@@ -65,23 +82,7 @@ public class MonteurScene {
                 gridPaneBas.add(n,i,0);
                 i++;
             }
-            gridPane.add(gridPaneBas,0,1);
-        }
-
-        if (haut.size() != 0){
-            GridPane gridPaneHaut = new GridPane();
-            gridPaneHaut.setAlignment(Pos.CENTER);
-            gridPaneHaut.setMinSize(largeur, hauteur/8);
-            gridPaneHaut.setPadding(new Insets(10,10,10,10));
-            //Setting the padding
-            gridPane.setPadding(new Insets(10,10,10,10));
-            int i = 0;
-            for (Region n: haut){
-                n.setMinSize(largeur/haut.size(), hauteur/8);
-                gridPaneHaut.add(n,i,0);
-                i++;
-            }
-            gridPane.add(gridPaneHaut,0,2);
+            gridPane.add(gridPaneBas,0,2);
         }
 
         return new Scene(gridPane,largeur,hauteur);

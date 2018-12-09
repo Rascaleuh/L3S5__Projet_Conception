@@ -41,6 +41,7 @@ public class IHMFX extends Application implements Observateur {
 
         //TODO AFFICHER / SUPPRIMER LES BOUTONS PAS ACCESSIBLE
         Scene scene = monteurScene.
+                ajoutHaut(vue.labelNom).
                 setCentre(vue.gridPane).
                 ajoutHaut(controleurIHMFX.selectFichier).
                 ajoutHaut(controleurIHMFX.précédent).

@@ -14,9 +14,9 @@ class Niveau {
         nom = _nom;
         level = new ArrayList<>();
         reset();
-
-
     }
+
+    String getNom() {return nom;}
 
     Niveau(String _nom, ArrayList<ArrayList<Integer>> clone, int _posx, int _posy) {
         nom = _nom;
@@ -46,7 +46,7 @@ class Niveau {
         System.out.println("Pos départ : ("+posx+","+posy+")");
         for (ArrayList<Integer> aLevel : level) {
             for (Integer anALevel : aLevel) {
-                System.out.print(anALevel);
+                System.out.print(anALevel +", ");
             }
             System.out.println();
         }

@@ -3,4 +3,11 @@ Projet de conception en java
 
 
 # Branche master
-Branche finale du projet. On merge sûrement sur cette branche quand on a un programme fonctionnel sinon on développe sur les autres branches.
+Branche finale du projet.
+Màj 05/12 : Projet fait avec les fonctionnalités suivantes
+- Mouvement OK
+- Selection de niveau OK
+- Selection de fichier OK
+- Reset OK
+- Affichage OK
+- Architecture respectée
