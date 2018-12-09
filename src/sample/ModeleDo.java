@@ -26,8 +26,6 @@ public class ModeleDo implements Modele {
         if (rt == 1 || rt == 2){
             soko.add(c);
             index = soko.size()-1;
-            System.out.println(soko.toString());
-            System.out.println(" i = " + index + " | size = " + soko.size());
         }
         return rt;
     }

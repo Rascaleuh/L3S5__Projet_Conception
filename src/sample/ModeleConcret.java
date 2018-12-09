@@ -24,8 +24,6 @@ public class ModeleConcret implements Modele {
         if ((numNiveau+n >= 0) && (numNiveau+n < liste_niveaux.size())){
             actuel = new Niveau(liste_niveaux.get(numNiveau+n));
             numNiveau += n;
-            System.out.println("Nouveau lvl : "+numNiveau);
-            actuel.afficher();
         }
     }
 
@@ -55,7 +53,6 @@ public class ModeleConcret implements Modele {
     @Override
     public void reset() {
         actuel = new Niveau( liste_niveaux.get(numNiveau) );
-        actuel.afficher();
     }
 
     @Override

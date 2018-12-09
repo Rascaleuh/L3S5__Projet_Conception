@@ -13,7 +13,6 @@ class Niveau {
     Niveau(String _nom){
         nom = _nom;
         level = new ArrayList<>();
-        reset();
     }
 
     String getNom() {return nom;}
@@ -35,10 +34,6 @@ class Niveau {
         }
         posx = niveau.posx;
         posy = niveau.posy;
-    }
-
-    private void reset(){
-
     }
 
     void afficher(){
