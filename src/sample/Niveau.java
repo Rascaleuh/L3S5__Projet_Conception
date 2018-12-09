@@ -44,7 +44,7 @@ class Niveau {
         System.out.println("Pos départ : ("+posx+","+posy+")");
         for (ArrayList<Integer> aLevel : level) {
             for (Integer anALevel : aLevel) {
-                System.out.print(anALevel);
+                System.out.print(anALevel +", ");
             }
             System.out.println();
         }

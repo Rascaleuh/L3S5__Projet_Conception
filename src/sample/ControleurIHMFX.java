@@ -34,6 +34,10 @@ public class ControleurIHMFX {
 
         suivant = new Button("Niveau suivant");
         suivant.setOnAction(new ActionSuivant());
+
+        reset.setDisable(true);
+        précédent.setDisable(true);
+        suivant.setDisable(true);
     }
 
     class ActionPrécédent implements EventHandler<ActionEvent> {
@@ -72,6 +76,15 @@ public class ControleurIHMFX {
 
             if (file != null) {
                 controleur.set_liste_niveaux(file.getAbsolutePath());
+                reset.setDisable(false);
+                précédent.setDisable(false);
+                suivant.setDisable(false);
+            }
+            else
+            {
+                reset.setDisable(true);
+                précédent.setDisable(true);
+                suivant.setDisable(true);
             }
         }
 

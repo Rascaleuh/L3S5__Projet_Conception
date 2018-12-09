@@ -107,7 +107,7 @@ public class ModeleConcret implements Modele {
                                 level.clear();
                                 index_niveau++;
                                 //Ajout saut de ligne
-                                fr.skip(1);
+                                //fr.skip(1);
                             }
                         }
                         else if (lecture_saut_de_ligne) {
