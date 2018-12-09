@@ -102,8 +102,8 @@ public class ModeleDo implements Modele {
 
     public void redoAll(){
         modeleNbMove.reset();
-        for(KeyCode c : listeMouvements){
-            modeleNbMove.move(c);
+        for(int i=0; i <= lastIndex; i++){
+            modeleNbMove.move(listeMouvements.get(i));
         }
     }
 }
