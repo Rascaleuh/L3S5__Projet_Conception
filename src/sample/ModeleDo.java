@@ -95,6 +95,7 @@ public class ModeleDo implements Modele {
     }
 
     public void redoAll(){
+        modeleNbMove.reset();
         for(KeyCode c : soko){
             modeleNbMove.move(c);
         }

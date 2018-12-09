@@ -50,6 +50,10 @@ public class ControleurIHMFX {
         reset.setDisable(true);
         précédent.setDisable(true);
         suivant.setDisable(true);
+        undo.setDisable(true);
+        redo.setDisable(true);
+        redoAll.setDisable(true);
+
     }
 
     class ActionRedoAll implements EventHandler<ActionEvent> {
@@ -105,12 +109,18 @@ public class ControleurIHMFX {
                 reset.setDisable(false);
                 précédent.setDisable(false);
                 suivant.setDisable(false);
+                undo.setDisable(false);
+                redo.setDisable(false);
+                redoAll.setDisable(false);
             }
             else
             {
                 reset.setDisable(true);
                 précédent.setDisable(true);
                 suivant.setDisable(true);
+                undo.setDisable(true);
+                redo.setDisable(true);
+                redoAll.setDisable(true);
             }
         }
 
