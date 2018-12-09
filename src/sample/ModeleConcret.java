@@ -41,15 +41,11 @@ public class ModeleConcret implements Modele {
 
         if( c == KeyCode.UP ){
             x = -1;
-            y = 0;
         }else if (c == KeyCode.DOWN ){
             x = 1;
-            y = 0;
         }else if (c == KeyCode.RIGHT){
-            x = 0;
             y = 1;
         }else if (c == KeyCode.LEFT){
-            x = 0;
             y = -1;
         }
 

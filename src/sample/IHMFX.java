@@ -46,6 +46,8 @@ public class IHMFX extends Application implements Observateur {
                 ajoutBas(controleurIHMFX.précédent).
                 ajoutBas(controleurIHMFX.suivant).
                 ajoutBas(controleurIHMFX.reset).
+                ajoutBas(controleurIHMFX.undo).
+                ajoutBas(controleurIHMFX.redo).
                 ajoutBas(vueNbMove.labelMove).
                 ajoutBas(vueNbMove.labelPoussée).
                 setLargeur(800).

@@ -18,6 +18,8 @@ public class ControleurIHMFX {
     Button selectFichier;
     Button précédent;
     Button suivant;
+    Button undo;
+    Button redo;
 
     ControleurIHMFX(Controleur controleur, VueIHMFX vue) {
         this.controleur = controleur;
@@ -34,6 +36,28 @@ public class ControleurIHMFX {
 
         suivant = new Button("Niveau suivant");
         suivant.setOnAction(new ActionSuivant());
+
+        undo = new Button("UNDO");
+        undo.setOnAction(new ActionUndo());
+
+        redo = new Button("REDO");
+        redo.setOnAction(new ActionRedo());
+    }
+
+    class ActionUndo implements EventHandler<ActionEvent> {
+        public void handle(ActionEvent event) {
+
+            controleur.undo();
+        }
+
+    }
+
+    class ActionRedo implements EventHandler<ActionEvent> {
+        public void handle(ActionEvent event) {
+
+            controleur.redo();
+        }
+
     }
 
     class ActionPrécédent implements EventHandler<ActionEvent> {

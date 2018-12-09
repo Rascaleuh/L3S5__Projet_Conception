@@ -3,39 +3,50 @@ package sample;
 import javafx.scene.input.KeyCode;
 
 public class FacadeModele {
-    ModeleNbMove modele = new ModeleNbMove(new ModeleConcret());
+    ModeleNbMove modeleNbMove = new ModeleNbMove(new ModeleConcret());
+    ModeleDo modeleDo = new ModeleDo(modeleNbMove);
 
     public boolean move(KeyCode c) {
-        modele.move(c);
-        return modele.win();
+        //modeleNbMove.move(c);
+        //return modeleNbMove.win();
+        modeleDo.move(c);
+        return modeleDo.win();
 
     }
 
     public void reset() {
-        modele.reset();
+        modeleDo.reset();
     }
 
     public Niveau getNiveau() {
-        return modele.getNiveau();
+        return modeleDo.getNiveau();
     }
 
     public void set_liste_niveaux(String chemin) {
-        modele.set_liste_niveaux(chemin);
+        modeleDo.set_liste_niveaux(chemin);
     }
 
     public void niveauPrécédent() {
-        modele.setActuel(-1);
+        modeleDo.setActuel(-1);
     }
 
     public void niveauSuivant(){
-        modele.setActuel(1);
+        modeleDo.setActuel(1);
     }
 
     public int nbMove(){
-        return modele.nbMove;
+        return modeleNbMove.nbMove;
     }
 
     public int nbPoussée(){
-        return modele.nbPoussée;
+        return modeleNbMove.nbPoussée;
+    }
+
+    public void undo() {
+        modeleDo.undo();
+    }
+
+    public void redo() {
+        modeleDo.redo();
     }
 }

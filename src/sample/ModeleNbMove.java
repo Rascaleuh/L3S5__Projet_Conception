@@ -19,7 +19,6 @@ public class ModeleNbMove implements  Modele{
     @Override
     public int move(KeyCode c) {
         int rt = modele.move(c);
-        System.out.println("RT MODELENBMOVE = " + rt);
         if (rt == 1){
             nbMove++;
         }else if (rt == 2){
@@ -27,10 +26,7 @@ public class ModeleNbMove implements  Modele{
             nbPoussée++;
         }
 
-        System.out.println("nbMove= " + nbMove);
-        System.out.println("nbPousée= "+ nbPoussée);
-
-        return 0;
+        return rt;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.input.KeyCode;
+
 import java.util.ArrayList;
 
 class Niveau {
@@ -129,5 +131,33 @@ class Niveau {
             }
         }
         return true;
+    }
+
+    public void moveCaisse(int x, int y) {
+        // Position de la caisse à bouger
+        int xCaisse = posx-x;
+        int yCaisse = posy-y;
+        move(x, y);
+        if( (level.get(xCaisse).get(yCaisse) == 42) || (level.get(xCaisse).get(yCaisse) == 36) ){
+            // Nouvelle position de la caisse
+            int newX = posx-x;
+            int newY = posy-y;
+            // Nouvelles représentations des cases
+            int nextCase = 36;
+            int oldCase = 32;
+
+            // Si on a une caisse goal, on remplace par un goal
+            if( level.get(xCaisse).get(yCaisse) == 42 ){
+                oldCase = 46;
+            }
+
+            // Si on a un goal sur la prochaine case
+            if( level.get(newX).get(newY) == 46){
+                nextCase = 42;
+            }
+
+            level.get(xCaisse).set(yCaisse, oldCase);
+            level.get(newX).set(newY, nextCase);
+        }
     }
 }
