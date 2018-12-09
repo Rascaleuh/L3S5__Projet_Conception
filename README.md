@@ -9,5 +9,7 @@ Màj 05/12 : Projet fait avec les fonctionnalités suivantes
 - Selection de niveau OK
 - Selection de fichier OK
 - Reset OK
-- Affichage OK
+- Affichage OK et amélioré
+- UNDO / REDO OK
+- REDO ALL OK
 - Architecture respectée
