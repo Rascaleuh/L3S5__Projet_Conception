@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
@@ -100,10 +102,28 @@ public class ModeleDo implements Modele {
         }
     }
 
-    public void redoAll(){
+    public void redoAll(Controleur singleton){
         modeleNbMove.reset();
-        for(int i=0; i <= lastIndex; i++){
-            modeleNbMove.move(listeMouvements.get(i));
-        }
+
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                for(int i=0; i <= lastIndex; i++){
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                    }
+
+                    int finalI = i;
+                    System.out.println("i = "+finalI);
+                    modeleNbMove.move(listeMouvements.get(finalI));
+                    singleton.notifie();
+                    ;
+                }
+                return null;
+            }
+        };
+        new Thread(sleeper).start();
+
     }
 }

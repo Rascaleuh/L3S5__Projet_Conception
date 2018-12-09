@@ -48,7 +48,7 @@ public class FacadeModele {
         modeleDo.redo();
     }
 
-    public void redoAll() {
-        modeleDo.redoAll();
+    public void redoAll(Controleur singleton) {
+        modeleDo.redoAll(singleton);
     }
 }

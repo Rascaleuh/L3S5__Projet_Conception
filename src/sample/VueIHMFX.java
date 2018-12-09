@@ -78,6 +78,7 @@ public class VueIHMFX {
     }
 
     public void dessine() {
+        System.out.println("dessine()");
         //test si on a changer de niveau, si oui on réinitiliase listeCases
         if( !(niveau.equals(commandeNiveau.exec())) )
             reset();

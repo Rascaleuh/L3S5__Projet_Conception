@@ -43,8 +43,8 @@ public class Controleur implements Sujet {
     }
 
     public void redoAll(){
-        facadeModele.redoAll();
-        notifie();
+        facadeModele.redoAll(singleton);
+
     }
 
     public void move(KeyCode c) {
@@ -52,6 +52,7 @@ public class Controleur implements Sujet {
         boolean win = facadeModele.move(c);
         notifie();
         if(win) {
+
             niveauSuivant();
         }
     }
