@@ -7,8 +7,6 @@ public class FacadeModele {
     ModeleDo modeleDo = new ModeleDo(modeleNbMove);
 
     public boolean move(KeyCode c) {
-        //modeleNbMove.move(c);
-        //return modeleNbMove.win();
         modeleDo.move(c);
         return modeleDo.win();
 
