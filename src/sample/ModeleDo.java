@@ -7,12 +7,17 @@ import java.util.concurrent.TimeUnit;
 
 public class ModeleDo implements Modele {
     Modele modeleNbMove;
-    ArrayList<KeyCode> soko;
-    int index = -1;  // Permet de savoir où est-ce qu'on est dans l'Arraylist
+    ArrayList<KeyCode> listeMouvements;
+    ArrayList<Boolean> listeMouvementsABougeCaisse;
+    int index;  // Permet de savoir où est-ce qu'on est dans l'Arraylist
+    int lastIndex;
 
     public ModeleDo(ModeleNbMove modele){
         this.modeleNbMove = modele;
-        soko = new ArrayList<KeyCode>();
+        listeMouvements = new ArrayList<>();
+        listeMouvementsABougeCaisse = new ArrayList<>();
+        index = -1;
+        lastIndex = index;
     }
 
     @Override
@@ -24,8 +29,10 @@ public class ModeleDo implements Modele {
     public int move(KeyCode c) {
         int rt = modeleNbMove.move(c);
         if (rt == 1 || rt == 2){
-            soko.add(c);
-            index = soko.size()-1;
+            listeMouvements.add(index+1, c);
+            listeMouvementsABougeCaisse.add(index+1, rt==2);
+            index++;
+            lastIndex = index;
         }
         return rt;
     }
@@ -33,13 +40,16 @@ public class ModeleDo implements Modele {
     @Override
     public void reset() {
         modeleNbMove.reset();
-        soko = new ArrayList<KeyCode>();
+        listeMouvements = new ArrayList<>();
+        listeMouvementsABougeCaisse = new ArrayList<>();
+        index = -1;
     }
 
     @Override
     public void setActuel(int n) {
         modeleNbMove.setActuel(n);
-        soko = new ArrayList<KeyCode>();
+        listeMouvements = new ArrayList<>();
+        listeMouvementsABougeCaisse = new ArrayList<>();
     }
 
     @Override
@@ -54,47 +64,44 @@ public class ModeleDo implements Modele {
 
     public void undo(){
         if( index >= 0 ){
-            KeyCode undo = soko.get(index);
+            KeyCode undo = listeMouvements.get(index);
             int x = 0;
             int y = 0;
 
             switch(undo){
                 case UP:
-                    undo = KeyCode.DOWN;
                     x = 1;
                     break;
                 case DOWN:
-                    undo = KeyCode.UP;
                     x = -1;
                     break;
                 case LEFT:
-                    undo = KeyCode.RIGHT;
                     y = 1;
                     break;
                 case RIGHT:
-                    undo = KeyCode.LEFT;
                     y = -1;
                     break;
             }
-
-            soko.add(undo);
-            index --;
-            getNiveau().moveCaisse(x, y);
+            ((ModeleNbMove)modeleNbMove).nbMove--;
+            if (listeMouvementsABougeCaisse.get(index))
+                ((ModeleNbMove)modeleNbMove).nbPoussée--;
+            getNiveau().undoMove(x, y, listeMouvementsABougeCaisse.get(index));
+            index--;
         }
     }
 
     public void redo(){
-        if(index+1 != soko.size()){
+        if(index != lastIndex){
             index++;
-            KeyCode redo = soko.get(index);
-            soko.add(redo);
+            KeyCode redo = listeMouvements.get(index);
+            listeMouvements.add(redo);
             modeleNbMove.move(redo);
         }
     }
 
     public void redoAll(){
         modeleNbMove.reset();
-        for(KeyCode c : soko){
+        for(KeyCode c : listeMouvements){
             modeleNbMove.move(c);
         }
     }

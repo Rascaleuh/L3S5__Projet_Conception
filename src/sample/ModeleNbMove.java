@@ -25,7 +25,6 @@ public class ModeleNbMove implements  Modele{
             nbMove++;
             nbPoussée++;
         }
-
         return rt;
     }
 
