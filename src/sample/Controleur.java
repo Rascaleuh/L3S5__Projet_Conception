@@ -44,7 +44,6 @@ public class Controleur implements Sujet {
 
     public void redoAll(){
         facadeModele.redoAll(singleton);
-
     }
 
     public void move(KeyCode c) {

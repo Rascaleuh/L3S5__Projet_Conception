@@ -90,6 +90,7 @@ public class ModeleDo implements Modele {
                 ((ModeleNbMove)modeleNbMove).nbPoussée--;
             getNiveau().undoMove(x, y, listeMouvementsABougeCaisse.get(index));
             index--;
+
         }
     }
 
@@ -108,7 +109,7 @@ public class ModeleDo implements Modele {
         Task<Void> sleeper = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                for(int i=0; i <= lastIndex; i++){
+                for(int i=0; i <= index; i++){
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
@@ -118,12 +119,10 @@ public class ModeleDo implements Modele {
                     System.out.println("i = "+finalI);
                     modeleNbMove.move(listeMouvements.get(finalI));
                     singleton.notifie();
-                    ;
                 }
                 return null;
             }
         };
         new Thread(sleeper).start();
-
     }
 }
