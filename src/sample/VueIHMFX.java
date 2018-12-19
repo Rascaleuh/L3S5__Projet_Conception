@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -78,8 +76,6 @@ public class VueIHMFX {
     }
 
     public void dessine() {
-        System.out.println("dessine()");
-        //test si on a changer de niveau, si oui on réinitiliase listeCases
         if( !(niveau.equals(commandeNiveau.exec())) )
             reset();
 

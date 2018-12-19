@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.scene.input.KeyCode;
 
 import java.io.File;
@@ -38,16 +36,12 @@ public class ModeleConcret implements Modele {
         int y = 0;
 
         if( c == KeyCode.UP ){
-            System.out.println("MOVE() : haut");
             x = -1;
         }else if (c == KeyCode.DOWN ){
-            System.out.println("MOVE() : bas");
             x = 1;
         }else if (c == KeyCode.RIGHT){
-            System.out.println("MOVE() : droite");
             y = 1;
         }else if (c == KeyCode.LEFT){
-            System.out.println("MOVE() : gauche");
             y = -1;
         }else{
             return 0;

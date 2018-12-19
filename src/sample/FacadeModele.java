@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.scene.input.KeyCode;
 
 public class FacadeModele {
@@ -48,7 +46,7 @@ public class FacadeModele {
         modeleDo.redo();
     }
 
-    public void redoAll(Controleur singleton) {
-        modeleDo.redoAll(singleton);
+    public void redoAll() {
+        modeleDo.redoAll();
     }
 }
