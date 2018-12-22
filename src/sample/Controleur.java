@@ -1,9 +1,9 @@
 package sample;
 
+import javafx.concurrent.Task;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Controleur implements Sujet {
     private static Controleur singleton;
@@ -43,15 +43,35 @@ public class Controleur implements Sujet {
     }
 
     public void redoAll(){
-        facadeModele.redoAll();
-        notifie();
+
+        ModeleDo modeleDo = facadeModele.get_modeleDo();
+        ModeleNbMove modeleNbMove = facadeModele.get_modeleNbMove();
+        modeleNbMove.reset();
+
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                for(int i=0; i <= modeleDo.get_lastIndex(); i++){
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                    }
+
+                    int finalI = i;
+                    modeleNbMove.move(modeleDo.listeMouvements.get(finalI));
+                    notifie();
+                }
+                return null;
+            }
+        };
+        new Thread(sleeper).start();
     }
 
     public void move(KeyCode c) {
-        //TODO : Faire une pause avant de charger le prochain niveau, maybe un écran de win ? Ou on charge pas le niveau
         boolean win = facadeModele.move(c);
         notifie();
         if(win) {
+
             niveauSuivant();
         }
     }

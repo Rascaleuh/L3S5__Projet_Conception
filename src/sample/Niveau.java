@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.scene.input.KeyCode;
-
 import java.util.ArrayList;
 
 class Niveau {
@@ -128,11 +126,13 @@ class Niveau {
         return true;
     }
 
-    public void moveCaisse(int x, int y) {
+    public void undoMove(int x, int y, boolean caisse_bougee) {
         // Position de la caisse à bouger
         int xCaisse = posx-x;
         int yCaisse = posy-y;
         move(x, y);
+
+        if (caisse_bougee)
         if( (level.get(xCaisse).get(yCaisse) == 42) || (level.get(xCaisse).get(yCaisse) == 36) ){
             // Nouvelle position de la caisse
             int newX = posx-x;

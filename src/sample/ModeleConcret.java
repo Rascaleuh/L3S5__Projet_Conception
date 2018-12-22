@@ -45,6 +45,8 @@ public class ModeleConcret implements Modele {
             y = 1;
         }else if (c == KeyCode.LEFT){
             y = -1;
+        }else{
+            return 0;
         }
 
         return actuel.move(x, y);

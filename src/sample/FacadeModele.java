@@ -20,6 +20,10 @@ public class FacadeModele {
         return modeleDo.getNiveau();
     }
 
+    public ModeleDo get_modeleDo() { return modeleDo; }
+
+    public ModeleNbMove get_modeleNbMove() { return modeleNbMove; }
+
     public void set_liste_niveaux(String chemin) {
         modeleDo.set_liste_niveaux(chemin);
     }
@@ -46,9 +50,5 @@ public class FacadeModele {
 
     public void redo() {
         modeleDo.redo();
-    }
-
-    public void redoAll() {
-        modeleDo.redoAll();
     }
 }
