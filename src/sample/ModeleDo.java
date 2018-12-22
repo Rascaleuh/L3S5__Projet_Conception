@@ -101,10 +101,13 @@ public class ModeleDo implements Modele {
         }
     }
 
-    public void redoAll(){
+    // Méthode redoAll() qui respecte l'architecture MVC mais sans délaus entre chaque mouvement
+    /*public void redoAll(){
         modeleNbMove.reset();
         for(int i=0; i <= lastIndex; i++){
             modeleNbMove.move(listeMouvements.get(i));
         }
-    }
+    }*/
+    public int get_lastIndex() { return lastIndex; }
+
 }

@@ -27,7 +27,7 @@ public class IHMFX extends Application implements Observateur {
 
         vue = new VueIHMFX(controleur);
         vue.gridPane.setAlignment(Pos.CENTER);
-        ControleurIHMFX controleurIHMFX = new ControleurIHMFX(controleur,vue);
+        ControleurIHMFX controleurIHMFX = new ControleurIHMFX(controleur, vue);
 
         vueNbMove = new VueNbMoveIHMFX(controleur);
         vueNbMove.labelPoussée.setAlignment(Pos.CENTER);

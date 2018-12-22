@@ -1,3 +1,4 @@
+import javafx.concurrent.Task;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
@@ -40,9 +41,27 @@ public class Controleur implements Sujet {
     }
 
     public void redoAll(){
+        ModeleDo modeleDo = facadeModele.get_modeleDo();
+        ModeleNbMove modeleNbMove = facadeModele.get_modeleNbMove();
+        modeleNbMove.reset();
 
-        facadeModele.redoAll();
-        notifie();
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                for(int i=0; i <= modeleDo.get_lastIndex(); i++){
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                    }
+
+                    int finalI = i;
+                    modeleNbMove.move(modeleDo.listeMouvements.get(finalI));
+                    notifie();
+                }
+                return null;
+            }
+        };
+        new Thread(sleeper).start();
     }
 
     public void move(KeyCode c) {
