@@ -51,6 +51,8 @@ public class ModeleDo implements Modele {
         modeleNbMove.setActuel(n);
         listeMouvements = new ArrayList<>();
         listeMouvementsABougeCaisse = new ArrayList<>();
+        index = -1;
+        lastIndex = index;
     }
 
     @Override
