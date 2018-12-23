@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -5,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
 
 public class IHMFX extends Application implements Observateur {
     VueIHMFX vue;
@@ -37,7 +40,7 @@ public class IHMFX extends Application implements Observateur {
         /* montage de la scene */
         MonteurScene monteurScene = new MonteurScene();
 
-        //TODO AFFICHER / SUPPRIMER LES BOUTONS PAS ACCESSIBLE
+
         Scene scene = monteurScene.
                 ajoutHautCentre(vue.labelNom).
                 setCentre(vue.gridPane).

@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -33,13 +35,21 @@ public class VueIHMFX {
         gridPane.setPrefSize(1000,1000);
 
         images = new HashMap<>();
-        images.put(35, new Image(new FileInputStream("img/mur.png"), 50, 50, true, true));
+        images.put(35, new Image( (VueIHMFX.class.getResource("/img/mur.png")).toString(), 50, 50, true, true ));
+        images.put(36, new Image( (VueIHMFX.class.getResource("/img/caisse.png")).toString(), 50, 50, true, true ));
+        images.put(42, new Image( (VueIHMFX.class.getResource("/img/caisseV.png")).toString(), 50, 50, true, true ));
+        images.put(43, new Image( (VueIHMFX.class.getResource("/img/personnage_on_goal.png")).toString(), 50, 50, true, true ));
+        images.put(64, new Image( (VueIHMFX.class.getResource("/img/personnage.png")).toString(), 50, 50, true, true ));
+        images.put(32, new Image( (VueIHMFX.class.getResource("/img/vide.png")).toString(), 50, 50, true, true ));
+        images.put(46, new Image( (VueIHMFX.class.getResource("/img/goal.png")).toString(), 50, 50, true, true ));
+
+        /*images.put(35, new Image(new FileInputStream("img/mur.png"), 50, 50, true, true));
         images.put(36, new Image(new FileInputStream("img/caisse.png"), 50, 50, true, true));
         images.put(42, new Image(new FileInputStream("img/caisseV.png"), 50, 50, true, true));
         images.put(43, new Image(new FileInputStream("img/personnage_on_goal.png"), 50, 50, true, true));
         images.put(64, new Image(new FileInputStream("img/personnage.png"), 50, 50, true, true));
         images.put(32, new Image(new FileInputStream("img/vide.png"), 50, 50, true, true));
-        images.put(46, new Image(new FileInputStream("img/goal.png"), 50, 50, true, true));
+        images.put(46, new Image(new FileInputStream("img/goal.png"), 50, 50, true, true));*/
 
         initListeCases();
         dessine();

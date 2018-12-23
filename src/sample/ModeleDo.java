@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.input.KeyCode;
